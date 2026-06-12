@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas de Red: CIDR y VLSM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Herramientas de Subredes</h1>
+
+    <div class="card">
+        <h2>1. Calculadora CIDR</h2>
+        <div class="form-group">
+            <label>Dirección IP (ej. 192.168.1.10)</label>
+            <input type="text" id="cidr-ip" placeholder="192.168.1.10">
+        </div>
+        <div class="form-group">
+            <label>Prefijo de Red (ej. 24)</label>
+            <input type="number" id="cidr-prefix" placeholder="24" min="0" max="32">
+        </div>
+        <button onclick="calcularCIDR()">Calcular CIDR</button>
+        <div id="cidr-result" class="result"></div>
+    </div>
+
+    <div class="card">
+        <h2>2. Calculadora VLSM</h2>
+        <div class="form-group">
+            <label>Red Principal (ej. 192.168.0.0)</label>
+            <input type="text" id="vlsm-ip" placeholder="192.168.0.0">
+        </div>
+        <div class="form-group">
+            <label>Prefijo Principal (ej. 24)</label>
+            <input type="number" id="vlsm-prefix" placeholder="24" min="0" max="32">
+        </div>
+        <div class="form-group">
+            <label>Hosts por subred (separados por comas, ej. 50, 20, 10)</label>
+            <input type="text" id="vlsm-hosts" placeholder="50, 20, 10">
+        </div>
+        <button onclick="calcularVLSM()">Calcular VLSM</button>
+        <div id="vlsm-result" class="result"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
