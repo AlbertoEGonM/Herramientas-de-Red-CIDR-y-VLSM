@@ -13,6 +13,16 @@
 
     <div class="card">
         <h2>1. Calculadora CIDR</h2>
+        
+        <div class="explanation-box">
+            <p><strong>¿Cómo funciona?</strong> El enrutamiento entre dominios sin clases (CIDR) permite una gestión flexible de direcciones IP. La calculadora toma la dirección IP base y el prefijo de red (máscara), realizando las siguientes operaciones a nivel de bits:</p>
+            <ul>
+                <li><strong>Máscara y Red:</strong> Convierte el prefijo en una máscara binaria de 32 bits y aplica un <code>AND</code> lógico con la IP para hallar la <em>Dirección de Red</em>.</li>
+                <li><strong>Broadcast:</strong> Invierte los bits de la máscara (operación <code>NOT</code>) y aplica un <code>OR</code> lógico con la IP de red para encontrar el límite superior o <em>Dirección de Broadcast</em>.</li>
+                <li><strong>Hosts:</strong> Determina la cantidad de hosts direccionables mediante la fórmula <code>2<sup>(32 - prefijo)</sup> - 2</code>, excluyendo las direcciones de red y broadcast.</li>
+            </ul>
+        </div>
+
         <div class="form-group">
             <label>Dirección IP (ej. 192.168.1.10)</label>
             <input type="text" id="cidr-ip" placeholder="192.168.1.10">
@@ -27,6 +37,16 @@
 
     <div class="card">
         <h2>2. Calculadora VLSM</h2>
+        
+        <div class="explanation-box">
+            <p><strong>¿Cómo funciona?</strong> La Máscara de Subred de Longitud Variable (VLSM) optimiza el direccionamiento al segmentar una red principal en bloques de tamaños adaptados a necesidades específicas:</p>
+            <ul>
+                <li><strong>Ordenamiento Jerárquico:</strong> El algoritmo ordena los requerimientos de hosts de mayor a menor para garantizar que las subredes grandes se asignen primero, previniendo el solapamiento de direcciones.</li>
+                <li><strong>Cálculo de Bits:</strong> Para cada subred, busca el menor número de bits de host (<code>n</code>) que cumpla con la condición <code>2<sup>n</sup> - 2 ≥ hosts requeridos</code>. El nuevo prefijo será <code>32 - n</code>.</li>
+                <li><strong>Asignación Consecutiva:</strong> Tras calcular los rangos de la primera subred, la dirección IP base se desplaza al siguiente bit disponible inmediatamente después del broadcast anterior, repitiendo el proceso secuencialmente.</li>
+            </ul>
+        </div>
+
         <div class="form-group">
             <label>Red Principal (ej. 192.168.0.0)</label>
             <input type="text" id="vlsm-ip" placeholder="192.168.0.0">
